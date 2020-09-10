@@ -5,6 +5,7 @@ const realmTest = {
     properties: {
         type: 'string',
         version: 'string',
+        test: 'string?'
     }
 };
 
@@ -15,11 +16,13 @@ Realm.open({ schema: [realmTest] })
         // ...use the realm instance here
         realm.write(() => {
             const myCar = realm.create('OS', {
-                type: 'Linux',
-                version: '18',
+                type: 'Linux5',
+                version: '18.0',
+                test: '123'
             });
+        }).catch(err => {
+            console.log('err', err)
         })
-        console.log('done')
         realm.close();
     })
     .catch(error => {
